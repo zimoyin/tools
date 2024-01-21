@@ -1,7 +1,6 @@
 package com.github.zimoyin.ui.tray
 
 import androidx.compose.runtime.*
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.toAwtImage
@@ -11,6 +10,7 @@ import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.TrayState
 import androidx.compose.ui.window.rememberTrayState
 import com.github.zimoyin.utils.IO
+import com.github.zimoyin.utils.iconSize
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.awt.*
@@ -878,37 +878,5 @@ internal val ComponentOrientation.layoutDirection: LayoutDirection
         isHorizontal -> LayoutDirection.Rtl
         else -> LayoutDirection.Ltr
     }
-
-internal val iconSize = when (DesktopPlatform.Current) {
-    // https://doc.qt.io/qt-5/qtwidgets-desktop-systray-example.html (search 22x22)
-    DesktopPlatform.Linux -> Size(22f, 22f)
-    // https://doc.qt.io/qt-5/qtwidgets-desktop-systray-example.html (search 16x16)
-    DesktopPlatform.Windows -> Size(16f, 16f)
-    // https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87
-    DesktopPlatform.MacOS -> Size(22f, 22f)
-    DesktopPlatform.Unknown -> Size(32f, 32f)
-}
-
-enum class DesktopPlatform {
-    Linux,
-    Windows,
-    MacOS,
-    Unknown;
-
-    companion object {
-        /**
-         * Identify OS on which the application is currently running.
-         */
-        val Current: DesktopPlatform by lazy {
-            val name = System.getProperty("os.name")
-            when {
-                name?.startsWith("Linux") == true -> Linux
-                name?.startsWith("Win") == true -> Windows
-                name == "Mac OS X" -> MacOS
-                else -> Unknown
-            }
-        }
-    }
-}
 
 private fun androidx.compose.ui.graphics.Color.toAwtColor(): Color = Color(this.red, this.green, this.blue, this.alpha)
