@@ -10,6 +10,7 @@ pluginManagement {
 
         println("> compose.version  : ${extra["compose.version"]}")
         println("> kotlin.version   : ${extra["kotlin.version"]}")
+        println("> target.jvm.version : ${extra["target.jvm.version"]}")
         println("> Java Version     : ${ System.getProperty("java.version") } ")
         println("> Java VM Version  : ${ System.getProperty("java.vm.version") } ")
         println("> Java VM Vendor   : ${ System.getProperty("java.vm.vendor") }  ")
