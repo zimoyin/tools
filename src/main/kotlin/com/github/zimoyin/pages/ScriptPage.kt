@@ -57,6 +57,17 @@ class ScriptPage : AbsPage() {
                     modifier = modifier().fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
+                    //演示
+                    Card(
+                        RowData(
+                            title = "测试脚本",
+                            date = "2024-01-17 12:00:00",
+                            description = "测试脚本内容",
+                            type = "Python",
+                            hash = "8848"
+                        )
+                    )
+
                     data.forEach {
                         Card(
                             it
@@ -82,7 +93,7 @@ class ScriptPage : AbsPage() {
                         )
             }
         }
-
+        //TODO
 
         return listOf()
     }
