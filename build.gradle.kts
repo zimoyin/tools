@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.compose")
 }
 
-group = "com.github.zimo"
+group = "com.github.zimoyin"
 version = "1.0-SNAPSHOT"
 
 repositories {
